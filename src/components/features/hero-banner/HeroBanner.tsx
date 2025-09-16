@@ -114,19 +114,6 @@ export const HeroBanner = ({
             animate={{
               opacity: headingVisible ? 1 : 0,
             }}>
-            <Heading
-              {...inspectorProps({ fieldId: 'heroBannerHeadline' })}
-              ref={headingRef}
-              as="h1"
-              letterSpacing="-0.11em"
-              color={heroBannerHeadlineColor || 'white'}
-              transform="translateY(0.33em)"
-              whiteSpace="nowrap">
-              {/* Tutorial: contentful-and-the-starter-template.md
-              {/* Uncomment the line below to render the Greeting field value */}
-              {/* {greeting} {' '} */}
-              {heroBannerHeadline}
-            </Heading>
           </motion.div>
         </Container>
       </Flex>
