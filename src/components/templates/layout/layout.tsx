@@ -1,4 +1,4 @@
-import { Flex, useTheme } from '@chakra-ui/react';
+import { Flex, useTheme, Heading } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
 
@@ -7,9 +7,10 @@ import { Header } from '../header';
 
 interface LayoutPropsInterface {
   children: ReactNode;
+  heading?: string; // 👈 added heading prop
 }
 
-export const Layout = ({ children }: LayoutPropsInterface) => {
+export const Layout = ({ children, heading }: LayoutPropsInterface) => {
   const router = useRouter();
   const theme = useTheme();
 
@@ -21,9 +22,29 @@ export const Layout = ({ children }: LayoutPropsInterface) => {
         borderBottom={isHomePage ? '' : '1px'}
         borderColor={isHomePage ? null : theme.f36.gray200}
       />
-      <Flex flexGrow="1" flexDirection="column" width="100%" as="main" pb={{ base: 8, lg: 12 }}>
+
+      <Flex
+        flexGrow="1"
+        flexDirection="column"
+        width="100%"
+        as="main"
+        pb={{ base: 8, lg: 12 }}
+      >
+        {/* 👇 Only show heading if provided */}
+        {heading && (
+          <Heading
+            as="h1"
+            size="lg"
+            mb={6}
+            textAlign="center"
+          >
+            {heading}
+          </Heading>
+        )}
+
         {children}
       </Flex>
+
       <Footer />
     </>
   );
